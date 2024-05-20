@@ -1,8 +1,11 @@
 from pymongo import MongoClient
 from bson import ObjectId
+from dotenv import load_dotenv
+import os
+load_dotenv()
 
-
-client = MongoClient("mongodb+srv://ani321r:5AiUgvHNpuEr732P@youtube.3ok3axd.mongodb.net/", tlsAllowInvalidCertificates=True)
+MY_ENV_VAR = os.getenv('MONGO_URI')
+client = MongoClient(MY_ENV_VAR, tlsAllowInvalidCertificates=True)
 
 db = client["ytmanager"]
 video_collection = db["videos"]
